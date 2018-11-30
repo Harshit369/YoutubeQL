@@ -1,7 +1,7 @@
 const express = require('express');
 const graphqlHTTP = require('express-graphql');
 
-const googleClient = require('./googleAuth').getAuthClient();
+const tokenPromise = require('./googleAuth').authorize();
 
 const app = express();
 
