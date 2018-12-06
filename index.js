@@ -1,12 +1,9 @@
 const express = require('express');
 const graphqlHTTP = require('express-graphql');
-// const session = require('express-session');
 
-const schema = require('./schema/video');
+const schema = require('./schema');
 
 const app = express();
-const google = require('./google');
-google.authorize();
 
 app.use(
   '/graphql',

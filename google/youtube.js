@@ -3,12 +3,14 @@ const { google } = require('googleapis');
 const { getToken } = require('./index');
 class YoutubeClient {
   constructor() {
-    this.service = google.youtube('v3');
+    this.service = google.youtube({
+      version: 'v3',
+      auth: getToken() // specify your API key here
+    });
   }
 
   list(params) {
-    const auth = getToken();
-    service.search.list({ ...params, auth });
+    return this.service.search.list(params);
   }
 }
 
