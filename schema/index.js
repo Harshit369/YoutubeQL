@@ -6,13 +6,13 @@ const {
   GraphQLSchema
 } = require('graphql');
 
-const { Youtube } = require('../google');
+const { Search } = require('../google');
 const VideoType = require('./video');
 
 const RootType = new GraphQLObjectType({
   name: 'RootQueryType',
   fields: {
-    videos: {
+    search: {
       type: new GraphQLList(VideoType),
       args: {
         name: { type: GraphQLString }
@@ -27,7 +27,7 @@ const RootType = new GraphQLObjectType({
           {
             data: { items }
           }
-        ] = await here(Youtube.list({ ...defaultParams, q: args.name }));
+        ] = await here(Search.list({ ...defaultParams, q: args.name }));
         return items;
       }
     }
