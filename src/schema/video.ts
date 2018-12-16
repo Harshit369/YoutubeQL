@@ -1,4 +1,4 @@
-const { GraphQLObjectType, GraphQLString, GraphQLInt } = require('graphql');
+import { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql';
 
 const IDType = new GraphQLObjectType({
   name: 'id',
@@ -57,4 +57,4 @@ const VideoType = new GraphQLObjectType({
   })
 });
 
-module.exports = VideoType;
+export default VideoType;

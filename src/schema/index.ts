@@ -1,13 +1,13 @@
-const { here } = require('await-here');
-const {
+import { here } from 'await-here';
+import {
   GraphQLObjectType,
   GraphQLString,
   GraphQLList,
   GraphQLSchema
-} = require('graphql');
+} from 'graphql';
 
-const { Search } = require('../google');
-const VideoType = require('./video');
+import { Search } from '../google';
+import VideoType from './video';
 
 const RootType = new GraphQLObjectType({
   name: 'RootQueryType',
@@ -17,7 +17,7 @@ const RootType = new GraphQLObjectType({
       args: {
         name: { type: GraphQLString }
       },
-      async resolve(parent, args) {
+      async resolve(__, args) {
         const defaultParams = {
           maxResults: '25',
           part: 'snippet'
@@ -34,6 +34,6 @@ const RootType = new GraphQLObjectType({
   }
 });
 
-module.exports = new GraphQLSchema({
+export default new GraphQLSchema({
   query: RootType
 });
